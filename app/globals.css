@@ -2560,7 +2560,6 @@ nav.scrolled {
 
   .nav-links.active {
     right: 0;
-    display: flex;
   }
 
   .nav-links li {
