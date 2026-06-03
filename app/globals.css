@@ -1640,6 +1640,82 @@ footer p { color: var(--neon-cyan); font-size: 0.95rem; margin-bottom: 10px; fon
     word-break: break-all;
     line-height: 1.4;
   }
+   /* ============================================================
+   MOBİL NAVBAR DÜZENİ: LOGO + WHATSAPP + HAMBURGER
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Navbar'ı flex düzene çevir */
+  #navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  /* Logo solda kalır */
+  .logo {
+    order: 1;
+    margin: 0;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+  }
+
+  /* Nav-right (içinde wp ve toggle var) ortada veya sağa yakın */
+  .nav-right {
+    order: 2;
+    display: flex !important;        /* mobilde görünür yap */
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;               /* logodan sonra boşluğu iterek sağa yaslar */
+  }
+
+  /* Gündüz/gece toggle'ını mobilde gizle (isteğe bağlı, yanında kalmasını istersen kaldır) */
+  .day-night-toggle {
+    display: none;
+  }
+
+  /* WhatsApp linkini mobil stille */
+  .nav-wp-link {
+    padding: 6px 12px;
+    font-size: 1rem;
+    gap: 6px;
+    white-space: nowrap;
+    background: rgba(37, 211, 102, 0.1);
+    border-radius: 40px;
+  }
+
+  .nav-wp-icon {
+    font-size: 1.3rem;
+  }
+
+  /* Hamburger butonu en sağda */
+  .mobile-menu-btn {
+    order: 3;
+    display: flex;
+    margin-left: 0;
+  }
+
+  /* Menü açıldığında içindeki tekrar eden WhatsApp linkini gizle (çakışmayı önler) */
+  .mobile-wp-item {
+    display: none !important;
+  }
+
+  /* Desktop wp linkini varsayılan olarak göster (üstte görünür) */
+  .desktop-wp-link {
+    display: inline-flex !important;
+  }
+}
+
+/* Daha küçük ekranlar için (≤480px) buton metnini kısaltabilirsiniz */
+@media (max-width: 480px) {
+  .nav-wp-text {
+    display: none;  /* Sadece ikon görünsün */
+  }
+  .nav-wp-link {
+    padding: 6px 10px;
+  }
+}
 
   /* --- Sections --- */
   section { padding: 90px 20px 60px; }
