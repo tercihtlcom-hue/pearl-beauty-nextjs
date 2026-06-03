@@ -2239,9 +2239,7 @@ footer p {
   nav.scrolled {
     padding: 12px 24px;
   }
-  .nav-links {
-    display: none;
-  }
+  
   .hero h1 {
     font-size: 3rem;
   }
@@ -2515,7 +2513,7 @@ nav.scrolled {
   position: fixed;
   inset: 0;
   background: rgba(4, 4, 20, 0.8);
-  z-index: 999;
+  z-index: 998;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
