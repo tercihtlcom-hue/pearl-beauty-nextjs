@@ -1610,9 +1610,7 @@ footer p { color: var(--neon-cyan); font-size: 0.95rem; margin-bottom: 10px; fon
 
   /* Mobil WhatsApp item */
   .mobile-wp-item {
-  display: block;
-  margin-top: 24px;
-  border-bottom: none !important;
+  display: none;
 }
   .mobile-wp-item .nav-wp-link {
     border: 1.5px solid rgba(37,211,102,0.3);
@@ -1762,4 +1760,16 @@ footer p { color: var(--neon-cyan); font-size: 0.95rem; margin-bottom: 10px; fon
     scroll-behavior: auto !important;
   }
   .floating-bg, .bg-particles, .transform-zone { display: none; }
+}
+
+@media (max-width: 768px) {
+  .mobile-wp-item {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-wp-link {
+    display: none;
+  }
 }
