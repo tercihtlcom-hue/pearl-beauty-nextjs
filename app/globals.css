@@ -2797,6 +2797,721 @@ nav.scrolled {
     animation: none !important;
     opacity: 0.3 !important;
   }
+/* ============================================================ */
+/* PEARL BEAUTY - MOBIL DUZELTME PATCH v2.0                     */
+/* Tarih: 2026-06-03                                           */
+/* Sorunlar: Transform zone overlay, floating images, modal     */
+/* ============================================================ */
+
+/* ============================================================ */
+/* 1. MOBILDE TRANSFORM ZONE TAMAMEN GIZLE                     */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .transform-zone,
+  .transform-zone::before,
+  .transform-zone::after,
+  .transform-zone .expert-image,
+  .transform-zone .core,
+  .floater,
+  .floating-bg,
+  .bg-particles,
+  .bg-flash,
+  .collision-burst,
+  .noise-overlay {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -9999 !important;
+  }
+}
+
+/* ============================================================ */
+/* 2. MODAL CLOSE BUTONU DUZELTME - Android dokunmatik          */
+/* ============================================================ */
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 107, 157, 0.2);
+  border: 2px solid rgba(255, 107, 157, 0.5);
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  z-index: 9999;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.modal-close:active {
+  background: rgba(255, 107, 157, 0.4);
+  transform: scale(0.92);
+}
+
+.modal-close:hover {
+  background: rgba(255, 107, 157, 0.35);
+  border-color: var(--neon-pink);
+  color: var(--neon-pink);
+  box-shadow: 0 0 20px var(--neon-pink-glow);
+}
+
+/* Modal overlay - dokunmatik alan */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 4, 20, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  touch-action: none;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal box - dokunmatik kaydirma */
+.modal-box {
+  background: linear-gradient(
+    135deg,
+    rgba(14, 14, 61, 0.98),
+    rgba(8, 8, 42, 0.99)
+  );
+  border: 1px solid rgba(255, 107, 157, 0.25);
+  border-radius: 24px;
+  max-width: 720px;
+  width: 92%;
+  max-height: 85vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 56px 32px 40px;
+  position: relative;
+  transform: scale(0.9) translateY(40px);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.7),
+    0 0 80px rgba(255, 107, 157, 0.1);
+  z-index: 9999;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-overlay.active .modal-box {
+  transform: scale(1) translateY(0);
+}
+
+/* ============================================================ */
+/* 3. MOBIL NAVBAR DUZELTME                                     */
+/* ============================================================ */
+@media (max-width: 768px) {
+  nav {
+    padding: 12px 16px;
+    min-height: 60px;
+  }
+
+  nav.scrolled {
+    padding: 10px 16px;
+    min-height: 52px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  /* WhatsApp linki mobilde daha kompakt */
+  .nav-wp-link {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    gap: 6px;
+  }
+
+  .nav-wp-icon {
+    font-size: 1.2rem;
+  }
+
+  .nav-wp-text {
+    display: none;
+  }
+
+  .day-night-toggle {
+    width: 48px;
+    height: 26px;
+  }
+
+  .toggle-slider {
+    width: 20px;
+    height: 20px;
+  }
+
+  body.day-mode .toggle-slider {
+    left: 26px;
+  }
+}
+
+/* ============================================================ */
+/* 4. HERO SECTION MOBIL DUZELTME                               */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 80px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  .hero-card {
+    padding: 28px 20px;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    padding: 10px 20px;
+    font-size: 0.7rem;
+    margin-bottom: 24px;
+  }
+
+  .hero-cta {
+    padding: 14px 28px;
+    font-size: 0.95rem;
+  }
+
+  .scroll-indicator {
+    display: none !important;
+  }
+}
+
+/* ============================================================ */
+/* 5. ABOUT SECTION MOBIL DUZELTME                              */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-image {
+    order: -1;
+  }
+
+  .about-image .img-frame {
+    height: 280px;
+    aspect-ratio: 16/10;
+  }
+
+  .about-text h3 {
+    font-size: 1.8rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .stat {
+    padding: 20px 8px;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    margin-top: 0;
+  }
+}
+
+/* ============================================================ */
+/* 6. SERVICES SECTION MOBIL DUZELTME                           */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    perspective: none;
+  }
+
+  .service-card {
+    min-height: 280px;
+    padding: 36px 24px;
+    border-radius: 24px;
+  }
+
+  .service-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.7);
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .service-card .click-hint {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
+  /* Kart arka planlarini mobilde daha koyu yap */
+  .service-card .card-bg::before {
+    background: linear-gradient(
+      180deg,
+      rgba(4, 4, 20, 0.5) 0%,
+      rgba(4, 4, 20, 0.85) 100%
+    ) !important;
+  }
+}
+
+/* ============================================================ */
+/* 7. CONTACT SECTION MOBIL DUZELTME                            */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .contact-info h3 {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
+
+  .contact-item {
+    padding: 20px 16px;
+    margin-bottom: 16px;
+  }
+
+  .contact-item .icon {
+    font-size: 1.4rem;
+    min-width: 40px;
+  }
+
+  .contact-item .info h4 {
+    font-size: 1rem;
+  }
+
+  .contact-item .info p {
+    font-size: 0.9rem;
+  }
+
+  .wp-icon-big {
+    font-size: 1.6rem;
+    min-width: 40px;
+  }
+
+  .contact-hours {
+    padding: 28px 20px;
+  }
+
+  .contact-hours h3 {
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+  }
+
+  .hours-row {
+    padding: 12px 0;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================================ */
+/* 8. QR KODLAR MOBIL DUZELTME                                  */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .qr-card {
+    margin-bottom: 24px;
+  }
+
+  .qr-frame {
+    width: 160px;
+    height: 160px;
+    padding: 16px;
+  }
+
+  .qr-frame canvas,
+  .qr-frame img,
+  .qr-frame svg {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .qr-logo {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+
+  .qr-label {
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
+}
+
+/* ============================================================ */
+/* 9. INSTAGRAM GRID MOBIL DUZELTME                             */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .instagram-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .insta-card {
+    border-radius: 12px;
+  }
+
+  .insta-overlay {
+    opacity: 1;
+    background: linear-gradient(
+      180deg,
+      transparent 50%,
+      rgba(4, 4, 20, 0.9) 100%
+    );
+  }
+
+  .insta-btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================================ */
+/* 10. SECTION HEADER MOBIL DUZELTME                            */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    line-height: 1.15;
+  }
+
+  .section-header p {
+    font-size: 1.2rem;
+  }
+
+  .section-wp-icon {
+    font-size: 8rem;
+  }
+
+  section {
+    padding: 100px 20px 60px;
+    min-height: auto;
+  }
+}
+
+/* ============================================================ */
+/* 11. FOOTER MOBIL DUZELTME                                    */
+/* ============================================================ */
+@media (max-width: 768px) {
+  footer {
+    padding: 40px 20px;
+  }
+
+  footer .logo {
+    font-size: 1.6rem;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================================ */
+/* 12. MOBIL PERFORMANS OPTIMIZASYONU - Blur/Shadow kapat       */
+/* ============================================================ */
+@media (max-width: 768px) {
+  /* Blur efektlerini kapat */
+  .service-card::after,
+  .contact-item,
+  .stat,
+  .hero-card,
+  .contact-hours,
+  .qr-frame,
+  .about-image .img-frame {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Agir gölge ve glow efektlerini basitlestir */
+  .hero h1,
+  .section-header h2,
+  .about-text h3,
+  .contact-info h3,
+  .stat-number,
+  .service-card h3 {
+    filter: none !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Box-shadow'lari basitlestir */
+  .hero-card,
+  .service-card,
+  .contact-item,
+  .stat,
+  .modal-box,
+  .qr-frame {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* GPU hizlandirmayi optimize et */
+  * {
+    will-change: auto !important;
+  }
+}
+
+/* ============================================================ */
+/* 13. COK KUCUK EKRANLAR (360px ve alti)                       */
+/* ============================================================ */
+@media (max-width: 360px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-card {
+    padding: 20px 16px;
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+  }
+
+  .service-card {
+    padding: 28px 16px;
+    min-height: 240px;
+  }
+
+  .service-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .modal-box {
+    padding: 48px 16px 32px;
+    width: 95%;
+  }
+
+  .modal-box h2 {
+    font-size: 1.6rem;
+  }
+
+  .modal-close {
+    width: 44px;
+    height: 44px;
+    top: 12px;
+    right: 12px;
+    font-size: 1.5rem;
+  }
+}
+
+/* ============================================================ */
+/* 14. YATAY MOD (LANDSCAPE) MOBIL DUZELTME                     */
+/* ============================================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  section {
+    min-height: auto;
+    padding: 80px 20px 40px;
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .scroll-indicator {
+    display: none !important;
+  }
+
+  .modal-box {
+    max-height: 90vh;
+    padding: 48px 24px 32px;
+  }
+}
+
+/* ============================================================ */
+/* 15. DOKUNMATIK CIHAZ OPTIMIZASYONU                           */
+/* ============================================================ */
+@media (hover: none) and (pointer: coarse) {
+  /* Hover efektlerini kapat, active kullan */
+  .service-card:hover {
+    transform: none;
+  }
+
+  .service-card:active {
+    transform: scale(0.98);
+  }
+
+  .insta-card:hover {
+    transform: none;
+  }
+
+  .insta-card:active {
+    transform: scale(0.96);
+  }
+
+  .about-image:hover .img-frame img {
+    transform: none;
+  }
+
+  .contact-item:hover {
+    transform: none;
+  }
+
+  .contact-item:active {
+    transform: scale(0.98);
+  }
+
+  .stat:hover {
+    transform: none;
+  }
+
+  /* Dokunmatik hedef boyutlari */
+  .modal-close,
+  .mobile-menu-btn,
+  .nav-wp-link,
+  .hero-cta,
+  .insta-btn,
+  .service-card {
+    min-height: 44px;
+  }
+}
+
+/* ============================================================ */
+/* 16. iOS SAFARI OZEL DUZELTMELER                              */
+/* ============================================================ */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    /* iOS'ta fixed position sorunlari */
+    nav {
+      position: fixed;
+      transform: translateZ(0);
+    }
+
+    /* iOS'ta momentum scroll */
+    .modal-box {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* iOS'ta border-radius sorunu */
+    .service-card,
+    .contact-item,
+    .stat,
+    .modal-box,
+    .hero-card {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+  }
+}
+
+/* ============================================================ */
+/* 17. MODAL ICERIK MOBIL DUZELTME                              */
+/* ============================================================ */
+@media (max-width: 768px) {
+  .modal-box h2 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .modal-box .modal-sub {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+
+  .modal-divider {
+    margin-bottom: 24px;
+  }
+
+  .modal-section {
+    margin-bottom: 24px;
+  }
+
+  .modal-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .modal-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .modal-section ul li {
+    font-size: 0.95rem;
+    padding: 8px 0 8px 24px;
+  }
+}
 
   /* 6. GPU belleği israfını önle */
   * {
