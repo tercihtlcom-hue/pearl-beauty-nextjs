@@ -1609,7 +1609,11 @@ footer p { color: var(--neon-cyan); font-size: 0.95rem; margin-bottom: 10px; fon
   .nav-links a::after { display: none; }
 
   /* Mobil WhatsApp item */
-  .mobile-wp-item { display: block; border-bottom: none !important; margin-top: 20px; }
+  .mobile-wp-item {
+  display: block;
+  margin-top: 24px;
+  border-bottom: none !important;
+}
   .mobile-wp-item .nav-wp-link {
     border: 1.5px solid rgba(37,211,102,0.3);
     border-radius: 16px;
@@ -1622,13 +1626,18 @@ footer p { color: var(--neon-cyan); font-size: 0.95rem; margin-bottom: 10px; fon
     letter-spacing: 0.5px;
     white-space: normal;
   }
-  .mobile-wp-item .nav-wp-icon { font-size: 1.6rem; }
-  .mobile-wp-item .nav-wp-text {
-    font-size: 0.82rem;
-    letter-spacing: 0.5px;
-    word-break: break-all;
-    line-height: 1.4;
-  }
+  .mobile-wp-item .nav-wp-link {
+  display: flex;
+  flex-direction: row;        /* yatay hizalama */
+  align-items: center;
+  gap: 12px;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1.5px solid rgba(37, 211, 102, 0.4);
+  border-radius: 20px;
+  padding: 12px 18px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
 
   /* --- Sections --- */
   section { padding: 90px 20px 60px; }
