@@ -1612,9 +1612,22 @@ footer p { color: var(--neon-cyan); font-size: 0.95rem; margin-bottom: 10px; fon
   .mobile-wp-item { display: block; border-bottom: none !important; margin-top: 20px; }
   .mobile-wp-item .nav-wp-link {
     border: 1.5px solid rgba(37,211,102,0.3);
-    border-radius: 100px;
-    padding: 14px 24px;
+    border-radius: 16px;
+    padding: 14px 20px;
     justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    white-space: normal;
+  }
+  .mobile-wp-item .nav-wp-icon { font-size: 1.6rem; }
+  .mobile-wp-item .nav-wp-text {
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    word-break: break-all;
+    line-height: 1.4;
   }
 
   /* --- Sections --- */
