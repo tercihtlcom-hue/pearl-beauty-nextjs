@@ -88,6 +88,12 @@ body.menu-open {
   opacity: 0.25;
 }
 
+@media (max-width: 768px) {
+  .bg-flash.active {
+    opacity: 0.12;
+  }
+}
+
 .bg-flash::before {
   content: "";
   position: absolute;
@@ -117,6 +123,12 @@ body.menu-open {
   background: transparent;
 }
 
+@media (max-width: 768px) {
+  .floating-bg {
+    perspective: 600px;
+  }
+}
+
 .bg-particles span {
   position: absolute;
   display: block;
@@ -124,6 +136,14 @@ body.menu-open {
   height: 3px;
   border-radius: 50%;
   animation: bgFloat 18s infinite linear;
+}
+
+@media (max-width: 768px) {
+  .bg-particles span {
+    width: 2px;
+    height: 2px;
+    opacity: 0.6;
+  }
 }
 
 @keyframes bgFloat {
@@ -152,6 +172,20 @@ body.menu-open {
   transform-style: preserve-3d;
   border-radius: 20px;
   animation: runIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (max-width: 768px) {
+  .floater {
+    max-width: 90px;
+    max-height: 90px;
+    border-radius: 12px;
+    animation: runIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .floater img {
+    border-radius: 12px;
+    border-width: 1px;
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.1);
+  }
 }
 
 @keyframes runIn {
@@ -210,6 +244,12 @@ body.menu-open {
   opacity: 1;
   transition: filter 0.6s ease, opacity 0.6s ease;
   animation: cinematicFlash 0.8s ease-out;
+}
+
+@media (max-width: 768px) {
+  .floater.is-transforming {
+    animation: cinematicFlash 0.6s ease-out;
+  }
 }
 
 @keyframes cinematicFlash {
@@ -285,6 +325,14 @@ body.menu-open {
     0 0 60px rgba(255, 255, 255, 0.5);
 }
 
+@media (max-width: 768px) {
+  .burst-particle {
+    width: 5px;
+    height: 5px;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+}
+
 @keyframes burstOut {
   0% {
     transform: translate(0, 0) scale(1);
@@ -311,6 +359,13 @@ body.menu-open {
   height: 300px;
   z-index: 0;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .transform-zone {
+    width: 180px;
+    height: 180px;
+  }
 }
 
 .transform-zone::before {
@@ -369,6 +424,19 @@ body.menu-open {
   aspect-ratio: 1/1;
 }
 
+@media (max-width: 768px) {
+  .transform-zone .expert-image {
+    width: 220px;
+    height: 220px;
+    border-width: 3px;
+    box-shadow:
+      0 0 40px rgba(255, 107, 157, 0.3),
+      0 0 80px rgba(192, 132, 252, 0.2),
+      0 0 120px rgba(255, 107, 157, 0.1),
+      inset 0 0 30px rgba(255, 107, 157, 0.08);
+  }
+}
+
 .transform-zone .expert-image img {
   width: 100%;
   height: 100%;
@@ -415,6 +483,13 @@ body.menu-open {
   box-shadow: 0 0 40px var(--neon-pink-glow);
 }
 
+@media (max-width: 768px) {
+  .transform-zone .core {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 @keyframes corePulse {
   0%,
   100% {
@@ -459,6 +534,12 @@ body.menu-open {
   z-index: 2;
   opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 768px) {
+  .noise-overlay {
+    opacity: 0.015;
+  }
 }
 
 /* ===== NAV ===== */
@@ -2812,22 +2893,74 @@ footer p {
     font-size: 0.85rem;
   }
 
-  /* --- FLOATING / TRANSFORM ZONE HIDE --- */
-  .transform-zone,
-  .transform-zone::before,
-  .transform-zone::after,
-  .transform-zone .expert-image,
-  .transform-zone .core,
-  .floater,
-  .floating-bg,
-  .bg-particles,
-  .bg-flash,
-  .collision-burst,
+  /* --- MOBILE BACKGROUND ADAPTATIONS --- */
+  /* Floating images: much smaller, edge-positioned */
+  .floater {
+    max-width: 90px;
+    max-height: 90px;
+    opacity: 0.5;
+    animation: runIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .floater img {
+    border-radius: 12px;
+    border-width: 1px;
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.1);
+  }
+  .floater.is-transforming {
+    animation: cinematicFlash 0.6s ease-out;
+  }
+
+  /* Transform zone: smaller, centered but compact */
+  .transform-zone {
+    width: 180px;
+    height: 180px;
+  }
+  .transform-zone::before {
+    border-width: 1.5px;
+    box-shadow: 0 0 30px rgba(255, 107, 157, 0.1), inset 0 0 30px rgba(255, 107, 157, 0.04);
+  }
+  .transform-zone::after {
+    width: 50%;
+    height: 50%;
+    border-width: 1px;
+  }
+  .transform-zone .expert-image {
+    width: 220px;
+    height: 220px;
+    border-width: 3px;
+    box-shadow:
+      0 0 40px rgba(255, 107, 157, 0.3),
+      0 0 80px rgba(192, 132, 252, 0.2),
+      0 0 120px rgba(255, 107, 157, 0.1),
+      inset 0 0 30px rgba(255, 107, 157, 0.08);
+  }
+  .transform-zone .core {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Particles: smaller, dimmer */
+  .bg-particles span {
+    width: 2px;
+    height: 2px;
+    opacity: 0.6;
+  }
+
+  /* Flash overlay: lower intensity */
+  .bg-flash.active {
+    opacity: 0.12;
+  }
+
+  /* Noise: lighter */
   .noise-overlay {
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0.015;
+  }
+
+  /* Collision burst: smaller particles */
+  .burst-particle {
+    width: 5px;
+    height: 5px;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
   }
 
   /* --- PERFORMANCE: reduce heavy effects (NO !important) --- */
