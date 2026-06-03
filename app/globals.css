@@ -58,6 +58,10 @@ body {
   transition: background 0.8s ease;
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
 .bg-flash {
   position: fixed;
   top: 0;
@@ -468,13 +472,162 @@ nav {
   align-items: center;
   background: rgba(4, 4, 20, 0.75);
   backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--glass-border);
   transition: all 0.3s ease;
+  min-height: 72px;
 }
 
 nav.scrolled {
   padding: 14px 60px;
   background: rgba(4, 4, 20, 0.95);
+  min-height: 56px;
+}
+
+.logo {
+  font-family: var(--font-playfair), "Playfair Display", serif;
+  font-size: 2.78rem;
+  font-weight: 800;
+  background: linear-gradient(
+    135deg,
+    #fff 0%,
+    var(--neon-pink) 50%,
+    var(--neon-purple) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.3));
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #e0e0ff;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+  text-shadow: 0 0 8px rgba(192, 132, 252, 0.15);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--neon-pink),
+    var(--neon-purple),
+    var(--neon-cyan)
+  );
+  box-shadow:
+    0 0 15px var(--neon-pink-glow),
+    0 0 30px var(--neon-purple-glow);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  text-shadow:
+    0 0 20px var(--neon-pink-glow),
+    0 0 40px var(--neon-purple-glow),
+    0 0 60px rgba(255, 107, 157, 0.2);
+  letter-spacing: 2.5px;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Sağ taraf - WhatsApp + toggle */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Mobile menüdeki WhatsApp (desktop'ta gizli) */
+.mobile-wp-item {
+  display: none;
+}
+
+/* Desktop'ta sağdaki WhatsApp */
+.desktop-wp-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-wp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #e0e0ff;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 1.58rem;
+  transition: all 0.3s ease;
+  position: relative;
+  text-shadow: 0 0 8px rgba(192, 132, 252, 0.15);
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(37, 211, 102, 0.2);
+  background: rgba(37, 211, 102, 0.05);
+}
+
+.nav-wp-icon {
+  color: #25d366;
+  font-size: 1.6rem;
+  filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.4));
+  transition: all 0.3s ease;
+  animation: wpPulse 2s ease-in-out infinite;
+}
+
+.nav-wp-text {
+  transition: all 0.3s ease;
+}
+
+.nav-wp-link:hover {
+  color: #ffffff;
+  background: rgba(37, 211, 102, 0.12);
+  border-color: rgba(37, 211, 102, 0.5);
+  box-shadow:
+    0 0 30px rgba(37, 211, 102, 0.2),
+    0 0 60px rgba(37, 211, 102, 0.1);
+  text-shadow:
+    0 0 20px rgba(37, 211, 102, 0.3),
+    0 0 40px rgba(37, 211, 102, 0.15);
+}
+
+.nav-wp-link:hover .nav-wp-icon {
+  filter: drop-shadow(0 0 15px rgba(37, 211, 102, 0.8));
+  transform: scale(1.15);
+}
+
+@keyframes wpPulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(37, 211, 102, 0.7));
+  }
 }
 
 .day-night-toggle {
@@ -760,133 +913,6 @@ body.day-mode .day-sky {
     transform: scale(1.1);
     opacity: 1;
   }
-}
-
-.nav-wp-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: #e0e0ff;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 1.58rem;
-  transition: all 0.3s ease;
-  position: relative;
-  text-shadow: 0 0 8px rgba(192, 132, 252, 0.15);
-  padding: 8px 16px;
-  border-radius: 100px;
-  border: 1px solid rgba(37, 211, 102, 0.2);
-  background: rgba(37, 211, 102, 0.05);
-}
-
-.nav-wp-icon {
-  color: #25d366;
-  font-size: 1.6rem;
-  filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.4));
-  transition: all 0.3s ease;
-  animation: wpPulse 2s ease-in-out infinite;
-}
-
-.nav-wp-text {
-  transition: all 0.3s ease;
-}
-
-.nav-wp-link:hover {
-  color: #ffffff;
-  background: rgba(37, 211, 102, 0.12);
-  border-color: rgba(37, 211, 102, 0.5);
-  box-shadow:
-    0 0 30px rgba(37, 211, 102, 0.2),
-    0 0 60px rgba(37, 211, 102, 0.1);
-  text-shadow:
-    0 0 20px rgba(37, 211, 102, 0.3),
-    0 0 40px rgba(37, 211, 102, 0.15);
-}
-
-.nav-wp-link:hover .nav-wp-icon {
-  filter: drop-shadow(0 0 15px rgba(37, 211, 102, 0.8));
-  transform: scale(1.15);
-}
-
-@keyframes wpPulse {
-  0%,
-  100% {
-    filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.4));
-  }
-  50% {
-    filter: drop-shadow(0 0 20px rgba(37, 211, 102, 0.7));
-  }
-}
-
-.logo {
-  justify-self: start;
-  font-family: var(--font-playfair), "Playfair Display", serif;
-  font-size: 2.78rem;
-  font-weight: 800;
-  background: linear-gradient(
-    135deg,
-    #fff 0%,
-    var(--neon-pink) 50%,
-    var(--neon-purple) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-decoration: none;
-  letter-spacing: -0.5px;
-  filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.3));
-}
-
-.nav-links {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: #e0e0ff;
-  text-decoration: none;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  position: relative;
-  text-shadow: 0 0 8px rgba(192, 132, 252, 0.15);
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--neon-pink),
-    var(--neon-purple),
-    var(--neon-cyan)
-  );
-  box-shadow:
-    0 0 15px var(--neon-pink-glow),
-    0 0 30px var(--neon-purple-glow);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #ffffff;
-  text-shadow:
-    0 0 20px var(--neon-pink-glow),
-    0 0 40px var(--neon-purple-glow),
-    0 0 60px rgba(255, 107, 157, 0.2);
-  letter-spacing: 2.5px;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
 }
 
 /* ===== SECTIONS ===== */
@@ -2432,7 +2458,7 @@ video {
   min-height: 48px;
   border-radius: 8px;
   transition: all 0.3s ease;
-  z-index: 1001;
+  z-index: 1003;
 }
 
 .mobile-menu-btn:hover {
@@ -2560,10 +2586,25 @@ nav.scrolled {
     right: 0;
   }
 
+  /* Menü öğeleri stagger animasyonu */
   .nav-links li {
     width: 100%;
     border-bottom: 1px solid var(--glass-border);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
   }
+
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+  .nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
+  .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+  .nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
 
   .nav-links a {
     display: block;
@@ -2701,8 +2742,8 @@ nav.scrolled {
 /* ============================================================ */
 
 @media (max-width: 768px) {
-  /* 1. Tüm blur/backdrop-filter efektlerini kapat */
-  nav,
+  /* 1. Blur efektlerini kapat - AMA menü açıkken koru */
+  nav:not(:has(.nav-links.active)),
   .service-card::after,
   .contact-item,
   .stat,
@@ -2713,6 +2754,12 @@ nav.scrolled {
   .qr-frame {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+  }
+
+  /* Menü açıkken blur korunsun */
+  body.menu-open .nav-links {
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
   }
 
   /* 2. Tüm drop-shadow/filter efektlerini basitleştir */
@@ -2822,83 +2869,6 @@ img {
   min-height: 100vh;
   contain: layout;
 }
-
-/* Nav için sabit yükseklik */
-nav {
-  min-height: 72px;
-}
-
-nav.scrolled {
-  min-height: 56px;
-}
-/* Navbar flex düzeni */
-#navbar {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr; /* Sol | Orta | Sağ */
-  align-items: center;
-  padding: 0 2rem; /* Kenar boşluklarını ayarla */
-}
-
-/* Menü ortada kalsın */
-.nav-links {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-  justify-content: center; /* Linkleri de ortala */
-}
-
-/* Sağ taraf - WhatsApp + toggle */
-.nav-right {
-  justify-self: end;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Mobile menüdeki WhatsApp (desktop'ta gizli) */
-.mobile-wp-item {
-  display: none;
-}
-
-/* Desktop'ta sağdaki WhatsApp */
-.desktop-wp-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Mobile düzenlemeler */
-@media (max-width: 768px) {
-  .nav-right {
-    display: none; /* Desktop sağ taraf mobile'da gizli */
-  }
-
-  .mobile-wp-item {
-    display: block; /* Mobile menüde WhatsApp görünsün */
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    height: 100vh;
-    flex-direction: column;
-    background: #0a0a1a; /* Kendi arka plan rengin */
-    padding: 6rem 2rem;
-    margin: 0;
-    transition: right 0.3s ease;
-    z-index: 100;
-  }
-
-  .nav-links.active {
-    right: 0;
-  }
-}
-
-/* ============================================================ */
-/* PRELOAD - Kritik kaynaklar                                      */
-/* ============================================================ */
 
 /* Görsel aspect-ratio düzeltmeleri */
 .about-image .img-frame {
